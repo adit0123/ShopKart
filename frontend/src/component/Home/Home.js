@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from "react";
 import { CgMouse } from "react-icons/cg";
 import "./Home.css"
-import Product from "./Product.js"
+import Product from "./ProductCard.js"
 import MetaData from "../layout/MetaData";
 import { FaSearch, FaShoppingCart, FaUser } from 'react-icons/fa';
 import { withRouter } from 'react-router-dom';
@@ -9,6 +9,8 @@ import { getProduct } from "../../actions/productAction";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../layout/Loader/Loader";
 import {useAlert} from "react-alert";
+import {clearErrors} from "../../actions/productAction";
+import { useNavigate } from 'react-router-dom';
 
 // const product = {
 //     name: "Blue Tshirt",
@@ -22,30 +24,30 @@ import {useAlert} from "react-alert";
 const Home = () => {
 
 
-    const handleSearchClick = () => {
-        // props.history.push('/Search');
-        console.log('clicked');
+  const navigate = useNavigate();
+  const handleSearchClick = () => {
+     navigate('/search');
     };
-
+  
     const handleCartClick = () => {
-        // props.history.push('/Cart');
+      navigate('/cart');
     };
-
+  
     const handleProfileClick = () => {
-        //  props.history.push('/login');
+      navigate('/login');
     };
 
-     const alert = useAlert();
+    const alert = useAlert();
     const dispatch = useDispatch();
     const { loading, error, products, productsCount } = useSelector((state) => state.products);
 
     useEffect(() => {
         if (error) {
           alert.error(error);
-          //dispatch(clearErrors());
+          dispatch(clearErrors());
         }
         dispatch(getProduct());
-    }, [dispatch]);
+    }, [dispatch, error, alert]);
 
     return (
         <Fragment>
@@ -66,7 +68,19 @@ const Home = () => {
             </a>
           </div>
 
-          <h2 className="homeHeading">Featured Products</h2>
+          <div className="headerIcons">
+        <div onClick={handleSearchClick} className="icon">
+          <FaSearch />
+        </div>
+        <div onClick={handleCartClick} className="icon">
+          <FaShoppingCart />
+        </div>
+        <div onClick={handleProfileClick} className="icon">
+          <FaUser />
+        </div>
+      </div>
+
+      <h2 className="homeHeading">Featured Products</h2>
 
           <div className="container" id="container">
             {products &&
