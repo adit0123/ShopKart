@@ -1,0 +1,23 @@
+1. nodemon
+2. why mongo://0.0.0.0:27017/Ecommerce")?
+3. post:http://localhost:4000/api/v1/product/new
+
+ide
+design pattern
+
+
+instead of remove(); we used deleteOne as it is depreciated (but deletMany also works need to check)
+mail id in config: tempmailprog@gmail.com
+			pass: proglab23
+			
+for all user
+"oldPassword":"password",
+"newPassword":"1234567d",
+"confirmPassword":"1234567d"
+
+there is problem in update profile 3.37.00
+caursel not working 6.11.00
+problem at 6.4.00
+
+App .js Search instead search
+use useNavigate instead of history in search.js (6.45.00)

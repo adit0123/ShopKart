@@ -9,6 +9,7 @@ import Slider from "@material-ui/core/Slider";
 import { useAlert } from "react-alert";
 import Typography from "@material-ui/core/Typography";
 import MetaData from "../layout/MetaData";
+import { useParams } from "react-router-dom";
 
 
 
@@ -22,7 +23,8 @@ const Products = ({match}) => {
         productsCount,
       } = useSelector((state) => state.products);
 
-      const keyword = match.params.keyword;
+      //const keyword = match.params.keyword;
+      const { keyword } = useParams();
 
       useEffect(() => {
        
