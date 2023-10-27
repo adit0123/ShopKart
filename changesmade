@@ -21,3 +21,8 @@ problem at 6.4.00
 
 App .js Search instead search
 use useNavigate instead of history in search.js (6.45.00)
+
+
+if npm start dosent work use this:
+net stop winnat
+net start winnat

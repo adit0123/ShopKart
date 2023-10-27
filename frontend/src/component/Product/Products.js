@@ -16,16 +16,22 @@ import { useParams } from "react-router-dom";
 const Products = ({match}) => {
     const dispatch =useDispatch();
 
+    const [currentPage, setCurrentPage] = useState(1);
+
     const {
         products,
         loading,
         error,
         productsCount,
+        resultPerPage
       } = useSelector((state) => state.products);
 
       //const keyword = match.params.keyword;
       const { keyword } = useParams();
 
+      const setCurrentPageNo = (e)=> {
+        setCurrentPage(e)
+      }
       useEffect(() => {
        
     
@@ -44,7 +50,22 @@ const Products = ({match}) => {
               ))}
           </div>
 
-    
+          <div className="paginationBox">
+            <Pagination
+            activePage={currentPage}
+            itemsCountPerPage={resultPerPage}
+            totalItemsCount={productsCount}
+            nextPageText="Next"
+            prevPageText="Prev"
+            firstPageText="1st"
+            lastPageText="Last"
+            itemClass="page-item"
+            linkClass="page-link"
+            activeClass="pageItemActive"
+            activeLinkClass="pageLinkActive"
+
+            />
+          </div>
 
      </Fragment>
     
