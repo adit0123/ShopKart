@@ -13,10 +13,12 @@ import { useParams } from "react-router-dom";
 
 
 
+
 const Products = () => {
     const dispatch =useDispatch();
 
     const [currentPage, setCurrentPage] = useState(1);
+    const [price, setPrice] = useState([0,25000]);
 
     const {
         products,
@@ -30,13 +32,18 @@ const Products = () => {
       const { keyword } = useParams();
 
       const setCurrentPageNo = (e)=> {
-        setCurrentPage(e)
-      }
+        setCurrentPage(e);
+      };
+
+      const priceHandler = (event,newPrice)=> {
+        setPrice(newPrice);
+      };
+
       useEffect(() => {
        
     
-        dispatch(getProduct(keyword,currentPage));
-      }, [dispatch,keyword,currentPage]);
+        dispatch(getProduct(keyword,currentPage,price));
+      }, [dispatch,keyword,currentPage,price]);
 
 
   return  <Fragment> 
@@ -50,7 +57,20 @@ const Products = () => {
               ))}
           </div>
 
-          <div className="paginationBox">
+          <div className="filterBox">
+              <Typography>Price</Typography>
+              <Slider
+                value={price}
+                onChange={priceHandler}
+                valueLabelDisplay="auto"
+                aria-labelledby="range-slider"
+                min={0}
+                max={25000}
+                />
+          </div>
+
+          {resultPerPage < productsCount && (
+            <div className="paginationBox">
             <Pagination
             activePage={currentPage}
             itemsCountPerPage={resultPerPage}
@@ -67,6 +87,7 @@ const Products = () => {
 
             />
           </div>
+          )}
 
      </Fragment>
     

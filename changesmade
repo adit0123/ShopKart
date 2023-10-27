@@ -21,8 +21,19 @@ problem at 6.4.00
 
 App .js Search instead search
 use useNavigate instead of history in search.js (6.45.00)
+use const { keyword } = useParams() instead of const keyword = match.params.keyword;
+pagination done at 6.58.00
+Product controller.js=>const resultPerPage = 8; we can use it to control the display of the product at page
+
+SKIPPING THE SLIDER PART OF PRODUCT ==> 7.06.00 26 OCT
 
 
-if npm start dosent work use this:
+#Windows
+
+
+Another one reason - maybe your port has been excluded by some reasons.
+
+So, try open CMD (command line) under admin rights and run :
+
 net stop winnat
 net start winnat
