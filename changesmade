@@ -37,3 +37,7 @@ So, try open CMD (command line) under admin rights and run :
 
 net stop winnat
 net start winnat
+
+
+From 7:00 till 7:10 we excluded filterProductscount 
+since the query was already executed and error message was displayed in a loop

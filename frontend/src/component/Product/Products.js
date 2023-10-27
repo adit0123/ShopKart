@@ -12,6 +12,16 @@ import MetaData from "../layout/MetaData";
 import { useParams } from "react-router-dom";
 
 
+const categories = [
+  "Laptop",
+  "Footwear",
+  "Bottom",
+  "Tops",
+  "Attire",
+  "Camera",
+  "SmartPhones",
+];
+
 
 
 const Products = () => {
@@ -19,6 +29,8 @@ const Products = () => {
 
     const [currentPage, setCurrentPage] = useState(1);
     const [price, setPrice] = useState([0,25000]);
+    const [category,setCategory] = useState("");
+
 
     const {
         products,
@@ -42,8 +54,8 @@ const Products = () => {
       useEffect(() => {
        
     
-        dispatch(getProduct(keyword,currentPage,price));
-      }, [dispatch,keyword,currentPage,price]);
+        dispatch(getProduct(keyword,currentPage,price,category));
+      }, [dispatch,keyword,currentPage,price,category]);
 
 
   return  <Fragment> 
@@ -67,7 +79,28 @@ const Products = () => {
                 min={0}
                 max={25000}
                 />
+
+          <Typography>Categories</Typography>
+          <ul className="categoryBox">
+            {categories.map((category) => (
+             <li
+                className="category-link"
+                key={category}
+                onClick={() => setCategory(category)}
+              >
+                {category}
+             </li>
+
+            ))}
+          </ul>
+
+          <fieldset>
+            <Typography component="legend">Ratings-Above</Typography>
+            
+          </fieldset>
           </div>
+
+
 
           {resultPerPage < productsCount && (
             <div className="paginationBox">
