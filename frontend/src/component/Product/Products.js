@@ -13,7 +13,7 @@ import { useParams } from "react-router-dom";
 
 
 
-const Products = ({match}) => {
+const Products = () => {
     const dispatch =useDispatch();
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -35,8 +35,8 @@ const Products = ({match}) => {
       useEffect(() => {
        
     
-        dispatch(getProduct(keyword));
-      }, [dispatch,keyword]);
+        dispatch(getProduct(keyword,currentPage));
+      }, [dispatch,keyword,currentPage]);
 
 
   return  <Fragment> 
@@ -55,6 +55,7 @@ const Products = ({match}) => {
             activePage={currentPage}
             itemsCountPerPage={resultPerPage}
             totalItemsCount={productsCount}
+            onChange={setCurrentPageNo}
             nextPageText="Next"
             prevPageText="Prev"
             firstPageText="1st"

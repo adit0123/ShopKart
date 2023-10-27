@@ -13,6 +13,7 @@ import {
   import ReviewCard from "./ReviewCard.js";
   import { useAlert } from "react-alert";
   import MetaData from "../layout/MetaData";
+  import { Rating } from "@material-ui/lab";
   // import { addItemsToCart } from "../../actions/cartAction";
 
 
