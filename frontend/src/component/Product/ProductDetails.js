@@ -13,14 +13,17 @@ import {
   import ReviewCard from "./ReviewCard.js";
   import { useAlert } from "react-alert";
   import MetaData from "../layout/MetaData";
-  import { Rating } from "@material-ui/lab";
+ // import { Rating } from "@material-ui/lab";
   // import { addItemsToCart } from "../../actions/cartAction";
 
 
 
-  const ProductDetails = ({ match }) => {
+  const ProductDetails = () => {
+
+    
+
     const dispatch = useDispatch();
-    const { id } = useParams();
+    const  {id}  = useParams();
      const alert = useAlert();
   
     const { product, loading, error } = useSelector(
@@ -30,37 +33,44 @@ import {
     // const { success, error: reviewError } = useSelector(
     //   (state) => state.newReview
     // );
-  
-    const options = {
-      edit: false,
-      color: "rgba(20,20,20,0.1)",
-      activeColor :"tomato",
-      size: window.innerWidth<600 ? 20 : 25,
-      value: product.ratings,
-      isHalf :true,
-      // readOnly: true,
-      // precision: 0.5,
-    };
+      console.log(product);
+      console.log(id);
+
+    
+      const options = {
+        edit: false,
+        color: "rgba(20,20,20,0.1)",
+        activeColor :"tomato",
+        size: window.innerWidth<600 ? 20 : 25,
+        value: product.ratings,
+        isHalf :true,
+       // readOnly: true,
+       // precision: 0.5,
+        // size: "large",
+        // value: product.ratings,
+        // readOnly: true,
+        // precision: 0.5,
+      };
   
    
-    const [quantity, setQuantity] = useState(1);
-    const [open, setOpen] = useState(false);
-    const [rating, setRating] = useState(0);
-    const [comment, setComment] = useState("");
+    // const [quantity, setQuantity] = useState(1);
+    // const [open, setOpen] = useState(false);
+    // const [rating, setRating] = useState(0);
+    // const [comment, setComment] = useState("");
 
-    const increaseQuantity = () => {
-      if (product.Stock <= quantity) return;
+    // const increaseQuantity = () => {
+    //   if (product.Stock <= quantity) return;
   
-      const qty = quantity + 1;
-      setQuantity(qty);
-    };
+    //   const qty = quantity + 1;
+    //   setQuantity(qty);
+    // };
   
-    const decreaseQuantity = () => {
-      if (1 >= quantity) return;
+    // const decreaseQuantity = () => {
+    //   if (1 >= quantity) return;
   
-      const qty = quantity - 1;
-      setQuantity(qty);
-    };
+    //   const qty = quantity - 1;
+    //   setQuantity(qty);
+    // };
    
     // const addToCartHandler = () => {
     //   dispatch(addItemsToCart(id, quantity));
@@ -84,10 +94,10 @@ import {
     // };
   
     useEffect(() => {
-      if (error) {
-        alert.error(error);
-        dispatch(clearErrors());
-      }
+      // if (error) {
+      //   alert.error(error);
+      //   dispatch(clearErrors());
+      // }
   
       // if (reviewError) {
       //   // alert.error(reviewError);
@@ -99,11 +109,18 @@ import {
       //   dispatch({ type: NEW_REVIEW_RESET });
       // }
       dispatch(getProductDetails(id));
-    }, [dispatch, id, error, alert ]);
+    }, [dispatch ,id ]);
+
+
+   
+
+   
+  //return product.reviews.filter((x) => x.rating === num).length;
       
     return (
      
-          <Fragment>
+          
+<Fragment>
             <MetaData title={`${product.name} -- ShopKart`} />
             <div className="ProductDetails">
               <div>
@@ -119,8 +136,8 @@ import {
                     ))}
                 </Carousel>
               </div>
-  
-              <div>
+
+               <div>
                 <div className="detailsBlock-1">
                   <h2>{product.name}</h2>
                   <p>Product # {product._id}</p>
@@ -132,7 +149,7 @@ import {
                     ({product.numOfReviews} Reviews)
                   </span>
                 </div>
-                <div className="detailsBlock-3">
+                <div className="detailsBlock-3"> 
                   <h1>{`₹${product.price}`}</h1>
                   <div className="detailsBlock-3-1">
                     <div className="detailsBlock-3-1-1">
@@ -144,7 +161,7 @@ import {
                       Add to Cart
                     </button>
                   </div>
-  
+
                   <p>
                     Status:
                     <b className={product.Stock < 1 ? "redColor" : "greenColor"}>
@@ -152,16 +169,16 @@ import {
                     </b>
                   </p>
                 </div>
-  
+
                 <div className="detailsBlock-4">
                   Description : <p>{product.description}</p>
                 </div>
-  
+
                 <button  className="submitReview">
                   Submit Review
                 </button>
-              </div>
-            </div>
+                    </div>
+            </div> 
             <h3 className="reviewsHeading" > REVIEWS</h3>
             {product.reviews && product.reviews[0] ? (
             <div className="reviews">
@@ -173,11 +190,37 @@ import {
           ) : (
             <p className="noReviews">No Reviews Yet</p>
           )}
-  
-            
+
       </Fragment>
     );
   };
   
   export default ProductDetails;
   
+
+
+
+// function ProductDetails() {
+//   return (
+//     <Fragment>
+   
+//        <div className="ProductDetails">
+// //               <div>
+// //                 <Carousel>
+// //                   {product.images &&
+//                     product.images.map((item, i) => (
+//                       <img
+//                         className="CarouselImage"
+//                         key={item.url}
+//                         src={item.url}
+//                         alt={`${i} Slide`}
+//                       />
+//                     ))}
+//                 </Carousel>
+//               </div>
+//     </div>
+//     </Fragment>
+//   )
+// }
+
+// export default ProductDetails

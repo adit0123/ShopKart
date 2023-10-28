@@ -42,6 +42,7 @@ exports.getAllProducts =  catchAsyncErrors(async(req,res, next)=>{
 exports.getProductDetails =  catchAsyncErrors(async (req, res, next) => {
    
     const product = await Product.findById(req.params.id);
+   // const resultPerPage = 8;
 
     if (!product){
         return next(new ErrorHander("Product not found",404));
@@ -50,8 +51,7 @@ exports.getProductDetails =  catchAsyncErrors(async (req, res, next) => {
     res.status(200).json({
         success: true,
         product,
-        productsCount,
-        resultPerPage,
+        // resultPerPage,
     });
 
 });
