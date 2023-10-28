@@ -50,3 +50,9 @@ for testing cloudinary:
 	email: dogesh@gmail.com
 	username: Dogesh
 	pass: password123
+	
+	new user
+	email: osama@gmail.com
+	pass: passwordosama
+
+Unable to register a user using UI
