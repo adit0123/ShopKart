@@ -57,7 +57,7 @@ const Products = ({match}) => {
        
         if(error){
           alert.error(error);
-          dispatch(clearErrors())
+          dispatch(clearErrors());
         }
         dispatch(getProduct(keyword,currentPage,price,category,ratings));
       }, [dispatch,keyword,currentPage,price,category,ratings,alert,error]);

@@ -36,7 +36,7 @@ export const getProduct = (keyword="",currentPage=1,price = [0,25000],category, 
 };
 
 export const getProductDetails = (id) => async (dispatch)=> {
-  console.log(id, 'iiiiid');
+  //console.log(id, 'iiiiid');
     try{
         dispatch({type: PRODUCT_DETAILS_REQUEST });
 
