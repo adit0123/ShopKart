@@ -41,3 +41,12 @@ net start winnat
 
 From 7:00 till 7:10 we excluded filterProductscount 
 since the query was already executed and error message was displayed in a loop
+
+donot use import { config } from "dotenv" in loginSignup.js 7.55.41
+
+We have downloaded express-fileupload at 8:2:00
+
+for testing cloudinary:
+	email: dogesh@gmail.com
+	username: Dogesh
+	pass: password123
