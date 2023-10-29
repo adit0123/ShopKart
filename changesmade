@@ -55,4 +55,12 @@ for testing cloudinary:
 	email: osama@gmail.com
 	pass: passwordosama
 
+
 Unable to register a user using UI
+
+
+New admin is:-
+abhishekh12@gmail.com
+password:- 1234567d
+
+In myprofile section Join On date is undefined because substr is depreciated -> profile.js
