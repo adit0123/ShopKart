@@ -8,6 +8,7 @@ import { useDispatch,useSelector } from "react-redux";
 import { clearErrors, loadUser, updateProfile } from "../../actions/userAction";
 import {useAlert} from "react-alert";
 import { UPDATE_PROFILE_RESET } from "../../constants/userConstants";
+import MetaData from "../layout/MetaData";
 
 
 const UpdateProfile = () => {
@@ -76,9 +77,11 @@ const UpdateProfile = () => {
 
     }, [dispatch, error, alert, navigate,user,isUpdated]);
     return (
-        <Fragment>
+       <Fragment>
+         {loading?<Loader/> :  <Fragment>
+            <MetaData title= "Update Profile"/>
             <div className="updateProfileContainer">
-                <div className="updateProfileUpBox"></div>
+                <div className="updateProfileBox"></div>
                 <h2>Update Profile</h2>
                 <form
                 className="updateProfileForm"
@@ -93,7 +96,7 @@ const UpdateProfile = () => {
                     required
                     name="name"
                     value={name}
-                    onChange={updateProfileDataChange}
+                    onChange={(e) => setName(e.target.value)}
                   />
                 </div>
                 <div className="updateProfileEmail">
@@ -104,7 +107,7 @@ const UpdateProfile = () => {
                     required
                     name="email"
                     value={email}
-                    onChange={updateProfileDataChange}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
                 <div id="updateProfileImage">
@@ -123,7 +126,8 @@ const UpdateProfile = () => {
                   />
               </form>
             </div>
-        </Fragment>
+        </Fragment>}
+       </Fragment>
     );
 };
 

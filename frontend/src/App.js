@@ -46,7 +46,7 @@ function App() {
           <Route exact path="/search" element={<Search/>} /> 
           <Route path="/products/:keyword" element={<Products/>} /> 
           {/* <ProtectedRoute path="/account" element={<Profile/>} />  */}
-          {/* <Route path="/me/update" element={<UpdateProfile/>} />  */}
+          <Route path="/me/update" element={<UpdateProfile/>} /> 
           <Route path="/account" element={<Profile/>} /> 
 
           <Route exact path="/login" element={<LoginSignUp/>} /> 
