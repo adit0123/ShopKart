@@ -64,3 +64,5 @@ abhishekh12@gmail.com
 password:- 1234567d
 
 In myprofile section Join On date is undefined because substr is depreciated -> profile.js
+
+update profile is directing to login directly without loading update page 9:05:00

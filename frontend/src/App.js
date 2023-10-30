@@ -5,6 +5,8 @@ import {  BrowserRouter as Router } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
 import WebFont from "webfontloader"
 import React, { useEffect } from 'react';
+import {  useState } from "react";
+import axios from "axios";
 import Footer from "./component/layout/Footer/Footer";
 import Home from "./component/Home/Home";
 //import { productDetailsReducer } from './reducers/productReducer';
@@ -19,10 +21,25 @@ import { useSelector } from 'react-redux';
 import Profile from "./component/User/Profile.js";
 import UpdateProfile from "./component/User/UpdateProfile.js";
 import ProtectedRoute from './component/Route/ProtectedRoute';
+import Cart from "./component/Cart/Cart.js"
+import Shipping from "./component/Cart/Shipping"
+import ConfirmOrder from "./component/Cart/ConfirmOrder"
+// import Payment from "./component/Cart/Payment";
+
 
 function App() {
 
-  const {isAuthenticated,user} =  useSelector(state => state.user)
+  const {isAuthenticated,user} =  useSelector(state => state.user);
+
+  const [stripeApiKey, setStripeApiKey] = useState("");
+
+  async function getStripeApiKey() {
+    const { data } = await axios.get("/api/v1/stripeapikey");
+
+    setStripeApiKey(data.stripeApiKey);
+  }
+
+
 
   useEffect(() => {
     WebFont.load({
@@ -32,7 +49,7 @@ function App() {
     });
   
     store.dispatch(loadUser());
-   
+    getStripeApiKey();
   }, []);
 
   return (
@@ -45,11 +62,17 @@ function App() {
           <Route exact path="/products" element={<Products/>} /> 
           <Route exact path="/search" element={<Search/>} /> 
           <Route path="/products/:keyword" element={<Products/>} /> 
-          {/* <ProtectedRoute path="/account" element={<Profile/>} />  */}
-          <Route path="/me/update" element={<UpdateProfile/>} /> 
+           {/* <ProtectedRoute path="/account" element={<Profile/>} />   */}
+          {/* <ProtectedRoute path="/me/update" element={<UpdateProfile/>} />  */}
+          <Route path="/me/update" element={<ProtectedRoute element={<UpdateProfile/>}/>} >
+            <Route path="/me/update" element={<UpdateProfile/>}/>
+          </Route> 
+
+          {/* <Route path="/me/update" element={<UpdateProfile/>}/> */}
           <Route path="/account" element={<Profile/>} /> 
 
           <Route exact path="/login" element={<LoginSignUp/>} /> 
+         
           {/* <ProtectedRoute exact path = "/account" element={<Profile/>} /> */}
           {/* <Route
            path='/me/update'
@@ -59,6 +82,12 @@ function App() {
             </ProtectedRoute>
            }
            /> */}
+
+
+
+       < Route exact path="/cart" element={<Cart/>} /> 
+       <Route exact path="/login/shipping" element={<Shipping/>} /> 
+       <Route exact path="/order/confirm" element={<ConfirmOrder/>} /> 
          </Routes>
       {/* <Footer /> */}
 
