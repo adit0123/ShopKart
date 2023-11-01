@@ -24,8 +24,12 @@ import ProtectedRoute from './component/Route/ProtectedRoute';
 import Cart from "./component/Cart/Cart.js"
 import Shipping from "./component/Cart/Shipping"
 import ConfirmOrder from "./component/Cart/ConfirmOrder"
-// import Payment from "./component/Cart/Payment";
-
+import Payment from "./component/Cart/Payment";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import OrderSuccess from "./component/Cart/OrderSuccess"
+import MyOrders from "./component/Order/MyOrders"
+import OrderDetails from "./component/Order/OrderDetails.js"
 
 function App() {
 
@@ -56,6 +60,19 @@ function App() {
     <Router>
       <Header/>
         {isAuthenticated && <UserOptions user={user} />}
+
+
+
+        {stripeApiKey && (
+        <Elements stripe={loadStripe(stripeApiKey)}>
+          <Routes>
+          <Route exact path="/process/payment" element={<Payment/>} />
+          </Routes>
+        </Elements>
+      )}
+
+
+
        <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/product/:id" element={<ProductDetails />} /> 
@@ -72,6 +89,7 @@ function App() {
           <Route path="/account" element={<Profile/>} /> 
 
           <Route exact path="/login" element={<LoginSignUp/>} /> 
+          
          
           {/* <ProtectedRoute exact path = "/account" element={<Profile/>} /> */}
           {/* <Route
@@ -88,6 +106,11 @@ function App() {
        < Route exact path="/cart" element={<Cart/>} /> 
        <Route exact path="/login/shipping" element={<Shipping/>} /> 
        <Route exact path="/order/confirm" element={<ConfirmOrder/>} /> 
+       <Route exact path="/success" element={<OrderSuccess/>} />
+       <Route exact path="/orders" element={<MyOrders/>} /> 
+       <Route exact path="/order/:id" element={<OrderDetails/>} /> 
+
+
          </Routes>
       {/* <Footer /> */}
 
