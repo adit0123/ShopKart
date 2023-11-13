@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { useSelector } from "react-redux";
-import { Navigate, Route } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import UpdateProfile from "../User/UpdateProfile";
 
 
@@ -31,9 +31,10 @@ const ProtectedRoute = ({ isAdmin, element: Component, ...rest }) => {
       return <Navigate to="/login" />;
     }
     if (isAdmin === true && user.role !== "admin"){
-      return <Navigate to="/login" />;
+      return <Navigate to="/account" />;
     }
-    return <UpdateProfile />;
+    return Component ;
+   
   }
 
   // <Route
@@ -60,6 +61,7 @@ const ProtectedRoute = ({ isAdmin, element: Component, ...rest }) => {
   // return (
   //   <Fragment>
   //     {loading === false && (
+  //       <Routes>
   //       <Route
   //         {...rest}
   //         render={(props) => {
@@ -72,8 +74,10 @@ const ProtectedRoute = ({ isAdmin, element: Component, ...rest }) => {
   //           }
 
   //           return <Component {...props} />
+  //           return Component 
   //         }}
   //       />
+  //       </Routes>
   //     )}
   //   </Fragment>
   // );

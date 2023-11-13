@@ -30,6 +30,11 @@ import { loadStripe } from "@stripe/stripe-js";
 import OrderSuccess from "./component/Cart/OrderSuccess"
 import MyOrders from "./component/Order/MyOrders"
 import OrderDetails from "./component/Order/OrderDetails.js"
+import Dashboard from "./component/Admin/Dashboard.js";
+import ProductList from "./component/Admin/ProductList.js";
+import NewProduct from './component/Admin/NewProduct.js';
+import Contact from "./component/layout/Contact/Contact";
+import About from "./component/layout/About/About";
 
 function App() {
 
@@ -78,6 +83,8 @@ function App() {
           <Route exact path="/product/:id" element={<ProductDetails />} /> 
           <Route exact path="/products" element={<Products/>} /> 
           <Route exact path="/search" element={<Search/>} /> 
+          <Route exact path="/contact" element={<Contact/>} /> 
+          <Route exact path="/about" element={<About/>} /> 
           <Route path="/products/:keyword" element={<Products/>} /> 
            {/* <ProtectedRoute path="/account" element={<Profile/>} />   */}
           {/* <ProtectedRoute path="/me/update" element={<UpdateProfile/>} />  */}
@@ -110,6 +117,21 @@ function App() {
        <Route exact path="/orders" element={<MyOrders/>} /> 
        <Route exact path="/order/:id" element={<OrderDetails/>} /> 
 
+
+
+       <Route exact path="/admin/dashboard" element={<Dashboard/>} />
+       <Route exact path="/admin/products" element={<ProductList/>} />
+       <Route exact path="/admin/product" element={<NewProduct/>} />
+
+
+
+
+       {/* <Route path="/admin/dashboard" element={<ProtectedRoute isAdmin={true} element={<Dashboard/>}/>} >
+            <Route path="/admin/dashboard" element={<Dashboard/>}/>
+          </Route> 
+       <Route path="/admin/products" element={<ProtectedRoute isAdmin={true} element={<ProductList/>}/>} >
+            <Route path="/admin/products" element={<ProductList/>}/>
+          </Route>  */}
 
          </Routes>
       {/* <Footer /> */}

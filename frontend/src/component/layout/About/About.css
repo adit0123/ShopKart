@@ -1,0 +1,66 @@
+/* AboutUsPage.css */
+.about-us-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #f4f4f4; /* Light background color */
+    color: #333;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  #about {
+    color: #00bcd4;
+  }
+  
+  .people-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+  
+  .person-card {
+    background-color: #fff; /* White background for cards */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    margin-bottom: 20px; /* Added margin to create space between cards */
+  }
+  
+  .person-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .person-details {
+    padding: 20px;
+  }
+  
+  #name {
+    color: #00bcd4;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    color: #666;
+    margin: 5px 0;
+  }
+  
+  /* Add a subtle fade-in effect for the entire page */
+  .about-us-container {
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  

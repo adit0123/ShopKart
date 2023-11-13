@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { useAlert } from "react-alert";
 import {logout} from "../../../actions/userAction";
 import { useDispatch, useSelector } from "react-redux";
-import zIndex from '@material-ui/core/styles/zIndex';
+// import zIndex from '@material-ui/core/styles/zIndex';
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 
 
@@ -39,13 +39,13 @@ const UserOptions = ({user}) => {
     { icon: <ExitToAppIcon />, name: "Logout", func: logoutUser },
   ];
 
-  if(user.role==="admin"){
-    options.unshift({ icon: <DashboardIcon />, name: "Dashboard", func: dashboard,
-  });
-  }
+  // if(user.role==="admin"){
+  //   options.unshift({ icon: <DashboardIcon />, name: "Dashboard", func: dashboard,
+  // });
+  // }
   
   function dashboard() {
-    navigate("/dashboard");
+    navigate("/admin/dashboard");
   }
 
   function orders() {
@@ -78,7 +78,7 @@ const UserOptions = ({user}) => {
         <img
           className="speedDialIcon"
           src={ user.avatar.url ? user.avatar.url : "/Dogesh.jpg"}
-          alt="Dogesh"
+          alt="Profile"
         />
       }
     >

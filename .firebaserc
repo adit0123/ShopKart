@@ -1,0 +1,9 @@
+{
+  "projects": {
+    "build": "shop-kart-36290",
+    "default": "shop-kart-36290",
+    "public": "shop-kart-36290"
+  },
+  "targets": {},
+  "etags": {}
+}

@@ -60,9 +60,28 @@ Unable to register a user using UI
 
 
 New admin is:-
-abhishekh12@gmail.com
+abc@gmail.com
 password:- 1234567d
 
 In myprofile section Join On date is undefined because substr is depreciated -> profile.js
 
 update profile is directing to login directly without loading update page 9:05:00
+
+
+	At 9:11 when we edit profile it should be data?.user and not data?.success or hence it will fail
+	File was userAction.js
+        dispatch({type: UPDATE_PROFILE_SUCCESS, payload: data?.user});
+		
+Mongo Db cloud:
+	email: tempmailprog@gmail.com
+	pass: programminglab
+	
+MongoDb Database user:
+	pass: adityachandle
+
+
+DB_URI = "mongodb://127.0.0.1:27017/Ecommerce"
+
+Heroku:
+ pass: programming@1234
+ email: tempmailprog@gmail

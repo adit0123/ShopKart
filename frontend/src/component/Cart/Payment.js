@@ -24,7 +24,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { createOrder, clearErrors } from "../../actions/orderAction";
 
-const Payment = ({  }) => {
+const Payment = () => {
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
 
   const dispatch = useDispatch();
@@ -107,9 +107,11 @@ const Payment = ({  }) => {
             id: result.paymentIntent.id,
             status: result.paymentIntent.status,
           };
+    //       product.Stock -= quantity;
+    // console.log(product.Stock);
 
           dispatch(createOrder(order));
-
+          
           navigate("/success");
           
         } else {

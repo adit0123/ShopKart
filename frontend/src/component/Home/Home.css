@@ -16,10 +16,12 @@
   margin: 5vmax;
 
   font: 600 2.5vmax "Roboto";
+  color: #ffffff;
 }
 
 .banner > p {
   font: 300 1.4vmax "Lucida Sans";
+  color: #ffffff;
 }
 
 .banner > a > button {
